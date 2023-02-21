@@ -87,6 +87,8 @@ public class PlayerMovement : MonoBehaviour {
     public void GameOver()
     {
         timer.timeValue = 200;
+        score = 0;
+        coins = 0;
         transform.position = new Vector3(12f, 2.07999992f, 0f);
         camera.transform.position = new Vector3(12f, 12f, -10f);
         lives--;

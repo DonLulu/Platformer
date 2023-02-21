@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-//character controller script based of brackeys tutorial
+//character controller script based off of brackeys tutorial
 
 public class CharacterController : MonoBehaviour
 {
