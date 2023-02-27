@@ -20,7 +20,7 @@ public class HittableBlockQuestion : MonoBehaviour
             alreadyHit = true;
             _hit.Invoke();
             StartCoroutine(Animation());
-            player.score += 200;
+            player.score += 100;
             player.coins++;
         }
     }

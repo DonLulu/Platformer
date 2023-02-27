@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Timer: MonoBehaviour
 {
     public TMP_Text timerText;
-    public float timeValue = 200;
+    public float timeValue = 100;
     public PlayerMovement player;
  
     public void Start(){

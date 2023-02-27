@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -18,9 +19,10 @@ public class PlayerMovement : MonoBehaviour {
     private bool takeOff = false;
     public bool isMarioBig = true;
     public int score;
-    
-    
-    
+    public TMP_Text message;
+
+
+
     public TMP_Text scoreUI;
     float horizontalMove = 0f;
     bool jump = false;
@@ -76,6 +78,11 @@ public class PlayerMovement : MonoBehaviour {
             print("dead");
             GameOver();
         }
+        if (other.tag == "End")
+        {
+            print("dead");
+            End();
+        }
     }
 
 
@@ -86,11 +93,31 @@ public class PlayerMovement : MonoBehaviour {
 
     public void GameOver()
     {
-        timer.timeValue = 200;
+        timer.timeValue = 100;
         score = 0;
         coins = 0;
         transform.position = new Vector3(12f, 2.07999992f, 0f);
         camera.transform.position = new Vector3(12f, 12f, -10f);
         lives--;
+        message.text = "Game Over";
+        StartCoroutine(waiterMessage());
     }
+    
+    public void End()
+    {
+        timer.timeValue = 100;
+        score = 0;
+        coins = 0;
+        transform.position = new Vector3(12f, 2.07999992f, 0f);
+        camera.transform.position = new Vector3(12f, 12f, -10f);
+        message.text = "Congratulations";
+        StartCoroutine(waiterMessage());
+    }
+
+    IEnumerator waiterMessage()
+    {
+        yield return new WaitForSeconds(3f);
+        message.text = "";
+    }
+    
 }
