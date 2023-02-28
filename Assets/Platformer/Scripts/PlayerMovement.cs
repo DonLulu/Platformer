@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool isMarioBig = true;
     public int score;
     public TMP_Text message;
+    public bool playerDied = false;
 
 
 
@@ -101,6 +102,7 @@ public class PlayerMovement : MonoBehaviour {
         lives--;
         message.text = "Game Over";
         StartCoroutine(waiterMessage());
+        playerDied = true;
     }
     
     public void End()
@@ -112,6 +114,7 @@ public class PlayerMovement : MonoBehaviour {
         camera.transform.position = new Vector3(12f, 12f, -10f);
         message.text = "Congratulations";
         StartCoroutine(waiterMessage());
+        
     }
 
     IEnumerator waiterMessage()

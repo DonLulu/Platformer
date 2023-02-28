@@ -12,7 +12,7 @@ public class LevelParser : MonoBehaviour
     public GameObject stonePrefab;
     public GameObject flowerPrefab;    
     public GameObject endPrefab;
-
+    public PlayerMovement player;
     public Transform environmentRoot;
 
     // --------------------------------------------------------------------------
@@ -24,6 +24,11 @@ public class LevelParser : MonoBehaviour
     // --------------------------------------------------------------------------
     void Update()
     {
+        if (player.playerDied)
+        {
+            player.playerDied = false;
+            LoadLevel();
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             ReloadLevel();
@@ -31,7 +36,7 @@ public class LevelParser : MonoBehaviour
     }
 
     // --------------------------------------------------------------------------
-    private void LoadLevel()
+    public void LoadLevel()
     {
         string fileToParse = $"{Application.dataPath}{"/Resources/"}{filename}.txt";
         Debug.Log($"Loading level file: {fileToParse}");
